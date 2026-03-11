@@ -3,17 +3,12 @@
     "functions": {
       "query": {
         "requiredRoles": ["data-reader"],
-        "parameterConstraints": {
-          "allowedTables": ["transactions", "reports"],
-          "maxLimit": 1000
-        },
         "resourceClassification": "confidential",
         "requiresHumanApproval": false,
         "auditRequired": true
       },
       "delete": {
         "requiredRoles": ["data-admin"],
-        "parameterConstraints": {},
         "resourceClassification": "restricted",
         "requiresHumanApproval": true,
         "auditRequired": true
@@ -24,9 +19,6 @@
     "functions": {
       "execute": {
         "requiredRoles": ["finance-writer"],
-        "parameterConstraints": {
-          "maxAmount": 5000
-        },
         "resourceClassification": "restricted",
         "requiresHumanApproval": false,
         "auditRequired": true

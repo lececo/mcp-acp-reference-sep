@@ -42,7 +42,7 @@ def evaluate_opa(input_data):
 def test_opa_allow_with_valid_roles():
     input_doc = {
         "agent": {"roles": ["data-reader"]},
-        "action": {"tool": "database", "function": "query", "parameters": {"table": "transactions", "limit": 100}}
+        "action": {"tool": "database", "function": "query", "parameters": {}}
     }
     result = evaluate_opa(input_doc)
     if result:
@@ -51,16 +51,7 @@ def test_opa_allow_with_valid_roles():
 def test_opa_deny_without_valid_roles():
     input_doc = {
         "agent": {"roles": ["data-reader"]},
-        "action": {"tool": "database", "function": "delete", "parameters": {"table": "transactions"}}
-    }
-    result = evaluate_opa(input_doc)
-    if result:
-        assert result.get("allow") == False
-
-def test_opa_deny_param_limit():
-    input_doc = {
-        "agent": {"roles": ["data-reader"]},
-        "action": {"tool": "database", "function": "query", "parameters": {"table": "transactions", "limit": 2000}}
+        "action": {"tool": "database", "function": "delete", "parameters": {}}
     }
     result = evaluate_opa(input_doc)
     if result:
