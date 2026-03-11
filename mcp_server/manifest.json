@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "serverId": "demo-server",
+  "tools": {
+    "database": {
+      "functions": {
+        "query": {
+          "requiredRoles": ["data-reader"],
+          "parameterConstraints": {
+            "allowedTables": ["transactions", "reports"],
+            "maxLimit": 1000
+          },
+          "resourceClassification": "confidential",
+          "requiresHumanApproval": false,
+          "auditRequired": true
+        },
+        "delete": {
+          "requiredRoles": ["data-admin"],
+          "parameterConstraints": {},
+          "resourceClassification": "restricted",
+          "requiresHumanApproval": true,
+          "auditRequired": true
+        }
+      }
+    },
+    "payment": {
+      "functions": {
+        "execute": {
+          "requiredRoles": ["finance-writer"],
+          "parameterConstraints": {
+            "maxAmount": 5000
+          },
+          "resourceClassification": "restricted",
+          "requiresHumanApproval": false,
+          "auditRequired": true
+        }
+      }
+    }
+  }
+}

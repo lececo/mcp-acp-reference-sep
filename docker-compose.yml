@@ -1,0 +1,16 @@
+services:
+  opa:
+    image: openpolicyagent/opa:latest
+    command: run --server --addr :8181 /policies /data
+    volumes:
+      - ./opa/policies:/policies
+      - ./opa/data:/data
+    ports:
+      - "8181:8181"
+
+  mcp-server:
+    build: ./mcp_server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
